@@ -4,17 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        var testPanNumbers = new List<string>()
+        if (args.Length == 0)
         {
-            "4111111111111111",
-            "4627100101654724",
-            "4486441729154030",
-            "4024007123874108",
-        };
+            return;
+        }
 
-        foreach (var panNumber in testPanNumbers)
+        foreach (var panNumber in args)
         {
-            CheckCardNumber(panNumber);
+            // Если есть не цифры, то пропускаем
+            if (!panNumber.All(char.IsDigit))
+            {
+                continue;
+            }
+            
+            CheckCardNumber(panNumber.Trim());
         }
     }
 
